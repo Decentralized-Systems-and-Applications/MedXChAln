@@ -17,6 +17,15 @@
                 <img src="{% static 'dashboard/Media/LOGO.png' %}" alt="MedXChAIn Logo" class="logo-img">
                 MedXChAIn
             </div>
+
+            <div class="user-profile">
+                <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" alt="Dr. Seham Hakim">
+                <div class="profile-text">
+                    <strong>Dr. Seham Hakim</strong><br>
+                    <span>Doctor</span>
+                </div>
+            </div>
+
             <nav class="main-nav">
                 <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><i class="fas fa-th-large"></i> Overview</a>
                 <a href="{% url 'anamnesis_record' %}" class="{% if request.resolver_match.url_name == 'anamnesis_record' %}active{% endif %}"><i class="fas fa-file-medical"></i> Anamnesis Record</a>
@@ -25,27 +34,53 @@
                 <a href="{% url 'hospital_management' %}" class="{% if request.resolver_match.url_name == 'hospital_management' %}active{% endif %}"><i class="fas fa-hospital"></i> Hospital Management</a>
                 <a href="{% url 'security_traceability' %}" class="{% if request.resolver_match.url_name == 'security_traceability' %}active{% endif %}"><i class="fas fa-shield-alt"></i> Security & Traceability</a>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-badge" style="background: #f0f4ff; border: 1px solid #d0daff; padding: 10px; border-radius: 8px;">
+                    <div class="badge-header" style="display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 800; color: #0052cc;">
+                        <div class="dot-indicator" style="width: 8px; height: 8px; background: #0052cc; border-radius: 50%;"></div>
+                        <span>FEDERATED LEARNING ACTIVE</span>
+                    </div>
+                </div>
+            </div>
         </aside>
 
         <main class="main-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <div style="display: flex; gap: 20px; font-size: 13px; font-weight: 600; color: #64748b;">
+                    <span>Network Status</span>
+                    <span>API Docs</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #0052cc; font-size: 14px;">v4.2.1</span><br>
+                        <span style="font-size: 11px; color: #8a94a6;">2 mins ago</span>
+                    </div>
+                    <i class="fas fa-history" style="color: #64748b; cursor: pointer;"></i>
+                    <i class="fas fa-project-diagram" style="color: #64748b; cursor: pointer;"></i>
+                    <i class="fas fa-bell" style="color: #64748b; cursor: pointer;"></i>
+                    <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" style="width: 35px; height: 35px; border-radius: 50%;">
+                </div>
+            </div>
+
             <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
                 <div>
                     <h2 style="font-size: 24px; font-weight: 700;">Security & Traceability</h2>
-                    <p style="font-size: 13px; color: var(--text-gray); margin-top: 5px;">Immutable ledger of all federated learning operations and model integrity logs.</p>
+                    <p style="font-size: 13px; color: #64748b; margin-top: 5px;">Immutable ledger of all federated learning operations and model integrity logs.</p>
                 </div>
                 <div style="display: flex; gap: 15px;">
-                    <div class="card" style="padding: 10px 20px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid #e2e8f0;">
-                        <i class="fas fa-shield-check" style="color: var(--primary-blue);"></i>
+                    <div class="card" style="padding: 10px 20px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid #e2e8f0; background: white;">
+                        <i class="fas fa-shield-check" style="color: #0052cc; font-size: 18px;"></i>
                         <div style="font-size: 10px; line-height: 1.2;">
-                            <span style="color: var(--text-gray); text-transform: uppercase;">Global Model</span><br>
-                            <strong style="font-size: 13px;">v4.2.1-STABLE</strong>
+                            <span style="color: #64748b; text-transform: uppercase; font-weight: 700;">Global Model</span><br>
+                            <strong style="font-size: 13px; font-weight: 800;">v4.2.1-STABLE</strong>
                         </div>
                     </div>
-                    <div class="card" style="padding: 10px 20px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid #e2e8f0;">
-                        <i class="fas fa-cubes" style="color: #00875a;"></i>
+                    <div class="card" style="padding: 10px 20px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid #e2e8f0; background: white;">
+                        <i class="fas fa-cubes" style="color: #00875a; font-size: 18px;"></i>
                         <div style="font-size: 10px; line-height: 1.2;">
-                            <span style="color: var(--text-gray); text-transform: uppercase;">Last Block</span><br>
-                            <strong style="font-size: 13px;">2m 44s ago</strong>
+                            <span style="color: #64748b; text-transform: uppercase; font-weight: 700;">Last Block</span><br>
+                            <strong style="font-size: 13px; font-weight: 800;">2m 44s ago</strong>
                         </div>
                     </div>
                 </div>
@@ -53,83 +88,176 @@
 
             <div class="diagnosis-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 30px;">
                 
-                <section class="card" style="background: white; padding: 25px; border-radius: 16px;">
+                <section class="card" style="background: white; padding: 25px; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                        <h3 style="font-size: 16px;"><i class="fas fa-list-ul"></i> Blockchain Transaction Ledger</h3>
+                        <h3 style="font-size: 16px; font-weight: 700;"><i class="fas fa-list-ul" style="color: #0052cc; margin-right: 8px;"></i> Blockchain Transaction Ledger</h3>
                         <div style="display: flex; gap: 8px;">
-                            <button class="btn-table-action">Export CSV </button>
-                            <button class="btn-table-action" style="background: var(--primary-blue); color: white; border: none;">Live Refresh</button>
+                            <button class="btn-table-action" style="padding: 8px 15px; background: #f1f5f9; border-radius: 8px; border: none; font-size: 11px; font-weight: 700; cursor: pointer;">Export CSV</button>
+                            <button class="btn-table-action" style="padding: 8px 15px; background: #0052cc; color: white; border-radius: 8px; border: none; font-size: 11px; font-weight: 700; cursor: pointer;">Live Refresh</button>
                         </div>
                     </div>
-                    <table class="node-table" style="width: 100%; font-size: 11px;">
+                    <table class="node-table" style="width: 100%; border-collapse: collapse;">
                         <thead>
-                            <tr style="text-align: left; color: var(--text-gray); border-bottom: 1px solid #f1f5f9;">
-                                <th style="padding: 10px;">MODEL HASH (SHA-256)</th>
-                                <th>HOSPITAL ID</th>
-                                <th>TIMESTAMP</th>
-                                <th>STATUS</th>
+                            <tr style="text-align: left; color: #8a94a6; font-size: 10px; border-bottom: 1px solid #f1f5f9; text-transform: uppercase;">
+                                <th style="padding: 10px;">Model Hash (SHA-256)</th>
+                                <th>Hospital ID</th>
+                                <th>Timestamp</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td style="font-family: monospace; color: var(--primary-blue);">0x72a1b9c8d7e6f54a3b...</td>
-                                <td>Mary_Center_01</td>
+                        <tbody style="font-size: 11px;">
+                            <tr style="border-bottom: 1px solid #f8fafc;">
+                                <td style="padding: 15px 10px; color: #0052cc; font-family: monospace;">0x72a1b9c8d7e6f54a3b...</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="background: #e0eaff; color: #0052cc; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">MH</span>
+                                        <strong>Mary_Center_01</strong>
+                                    </div>
+                                </td>
                                 <td>2026-04-28 14:22:01</td>
-                                <td><span class="status-pill validated" style="font-size: 9px;">COMMITTED</span></td>
+                                <td><span style="background: #e3fcef; color: #00875a; padding: 4px 10px; border-radius: 12px; font-weight: 800;">COMMITTED</span></td>
                             </tr>
-                            <tr>
-                                <td style="font-family: monospace; color: var(--primary-blue);">0xdeadbeef1234567890...</td>
-                                <td>Johns_Hopkins_V2</td>
+                            <tr style="border-bottom: 1px solid #f8fafc;">
+                                <td style="padding: 15px 10px; color: #0052cc; font-family: monospace;">0xdeadbeef1234567890...</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="background: #f1f5f9; color: #1e293b; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">JH</span>
+                                        <strong>Johns_Hopkins_V2</strong>
+                                    </div>
+                                </td>
                                 <td>2026-04-28 14:05:01</td>
-                                <td><span class="status-pill outlier" style="font-size: 9px; background: #ffebe6; color: #bf2600;">FLAGGED</span></td>
+                                <td><span style="background: #ffebe6; color: #bf2600; padding: 4px 10px; border-radius: 12px; font-weight: 800;">FLAGGED</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f8fafc;">
+                                <td style="padding: 15px 10px; color: #0052cc; font-family: monospace;">0x1a2b3c4d5e6f7a8b9c...</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="background: #fff0ed; color: #bf2600; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">CC</span>
+                                        <strong>Cleveland_C_H1</strong>
+                                    </div>
+                                </td>
+                                <td>2026-04-28 13:45:12</td>
+                                <td><span style="background: #e3fcef; color: #00875a; padding: 4px 10px; border-radius: 12px; font-weight: 800;">COMMITTED</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f8fafc;">
+                                <td style="padding: 15px 10px; color: #0052cc; font-family: monospace;">0x5f9e8d7c6b5a43210f...</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="background: #e3fcef; color: #00875a; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">MC</span>
+                                        <strong>Mayo_Clinic_M5</strong>
+                                    </div>
+                                </td>
+                                <td>2026-04-28 13:15:30</td>
+                                <td><span style="background: #e3fcef; color: #00875a; padding: 4px 10px; border-radius: 12px; font-weight: 800;">COMMITTED</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f8fafc;">
+                                <td style="padding: 15px 10px; color: #0052cc; font-family: monospace;">0xabcde1234567890abc...</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="background: #e0eaff; color: #0052cc; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">SH</span>
+                                        <strong>Stanford_Health_S2</strong>
+                                    </div>
+                                </td>
+                                <td>2026-04-28 12:50:44</td>
+                                <td><span style="background: #e3fcef; color: #00875a; padding: 4px 10px; border-radius: 12px; font-weight: 800;">COMMITTED</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f8fafc;">
+                                <td style="padding: 15px 10px; color: #0052cc; font-family: monospace;">0x6677889900aabbccdd...</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="background: #f0f4ff; color: #1e293b; width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">UM</span>
+                                        <strong>UCLA_Medical_U1</strong>
+                                    </div>
+                                </td>
+                                <td>2026-04-28 12:10:15</td>
+                                <td><span style="background: #e3fcef; color: #00875a; padding: 4px 10px; border-radius: 12px; font-weight: 800;">COMMITTED</span></td>
                             </tr>
                         </tbody>
                     </table>
                     <div style="text-align: center; margin-top: 20px;">
-                        <a href="#" style="font-size: 11px; font-weight: 700; color: var(--primary-blue); text-decoration: none;">VIEW FULL LEDGER HISTORY</a>
+                        <a href="#" style="font-size: 11px; font-weight: 700; color: #0052cc; text-decoration: none;">VIEW FULL LEDGER HISTORY</a>
                     </div>
                 </section>
 
                 <aside>
                     <div class="card" style="background: white; padding: 20px; border-radius: 16px; margin-bottom: 20px;">
-                        <h3 style="font-size: 14px; margin-bottom: 15px;"><i class="fas fa-cloud-nodes"></i> IPFS References</h3>
+                        <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 15px;"><i class="fas fa-cloud-nodes" style="color: #0052cc; margin-right: 8px;"></i> IPFS References <i class="fas fa-check-circle" style="color: #00875a; float: right; font-size: 14px;"></i></h3>
                         <div style="display: flex; flex-direction: column; gap: 12px;">
                             <div style="background: #f8fafc; padding: 10px; border-radius: 8px;">
                                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                    <span style="font-size: 9px; color: var(--text-gray);">GLOBAL WEIGHT SET CID</span>
+                                    <span style="font-size: 9px; color: #64748b; font-weight: 700;">GLOBAL WEIGHT SET CID</span>
                                     <span style="font-size: 9px; font-weight: 800; color: #00875a;">VERIFIED</span>
                                 </div>
-                                <code style="font-size: 10px;">QmXoyp...3p2z</code>
+                                <code style="font-size: 10px; font-weight: 600;">QmXoyp...3p2z</code>
                             </div>
+                            <div style="background: #f8fafc; padding: 10px; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                    <span style="font-size: 9px; color: #64748b; font-weight: 700;">GRADIENT DELTA CID</span>
+                                    <span style="font-size: 9px; font-weight: 800; color: #00875a;">SECURE</span>
+                                </div>
+                                <code style="font-size: 10px; font-weight: 600;">bafybe...y7i</code>
+                            </div>
+                        </div>
+                        <button style="width: 100%; margin-top: 15px; background: white; border: 1px solid #e2e8f0; padding: 8px; border-radius: 8px; font-size: 10px; font-weight: 700; color: #64748b; cursor: pointer;">RE-VALIDATE ALL CIDS</button>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, #0747a6 0%, #0052cc 100%); color: white; padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                        <h3 style="font-size: 14px; font-weight: 700;">Integrity Status</h3>
+                        <p style="font-size: 11px; opacity: 0.8; margin-bottom: 15px;">Real-time hash validation across distributed nodes.</p>
+                        <div style="display: flex; justify-content: center; gap: 5px; height: 40px; align-items: flex-end; margin-bottom: 15px;">
+                            <div style="width: 10px; height: 30%; background: rgba(255,255,255,0.3); border-radius: 2px;"></div>
+                            <div style="width: 10px; height: 70%; background: rgba(255,255,255,0.7); border-radius: 2px;"></div>
+                            <div style="width: 10px; height: 50%; background: rgba(255,255,255,0.5); border-radius: 2px;"></div>
+                            <div style="width: 10px; height: 90%; background: white; border-radius: 2px;"></div>
+                            <div style="width: 10px; height: 60%; background: rgba(255,255,255,0.8); border-radius: 2px;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                            <span style="font-size: 10px; font-weight: 700; text-transform: uppercase;">Network Trust</span>
+                            <strong style="font-size: 18px;">99.9%</strong>
                         </div>
                     </div>
 
-                    <div class="card" style="background: linear-gradient(135deg, #0747a6 0%, #0052cc 100%); color: white; padding: 20px; border-radius: 16px;">
-                        <h3 style="font-size: 14px;">Integrity Status</h3>
-                        <p style="font-size: 11px; opacity: 0.8; margin-bottom: 15px;">Real-time hash validation across nodes.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                            <span style="font-size: 10px; font-weight: 700;">NETWORK TRUST</span>
-                            <strong style="font-size: 18px;">99.9%</strong>
+                    <div class="card" style="background: white; padding: 20px; border-radius: 16px;">
+                        <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 15px;">Audited Entities</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 12px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #64748b;">Participating Nodes</span>
+                                <strong>12 active</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #64748b;">Validation Time</span>
+                                <strong>14ms avg</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #64748b;">Consensus Algorithm</span>
+                                <strong style="font-size: 11px;">Proof-of-Authority</strong>
+                            </div>
                         </div>
                     </div>
                 </aside>
             </div>
 
             <section class="card" style="background: #f0f7ff; border: 1px solid #deebff; padding: 30px; border-radius: 16px; display: flex; align-items: center; gap: 40px;">
-                <img src="{% static 'dashboard/Media/traceability_graphic.png' %}" style="width: 200px; opacity: 0.8;">
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                    <i class="fas fa-project-diagram" style="font-size: 60px; color: #0052cc;"></i>
+                </div>
                 <div>
-                    <h3 style="margin-bottom: 10px;">Automated Traceability Reporting</h3>
+                    <h3 style="margin-bottom: 10px; font-weight: 800; color: #0d2149;">Automated Traceability Reporting</h3>
                     <p style="font-size: 13px; color: #42526e; line-height: 1.6; margin-bottom: 20px;">
-                        Utilizes a private sidechain to record every gradient update. This ensures no single participant can tamper with the global model weights without being detected by the network consensus.
+                        Federated Health AI utilizes a private Ethereum-compatible sidechain to record every gradient update. This ensures no single participant can tamper with the global model weights without being detected by the network consensus.
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div style="font-size: 12px; font-weight: 700; color: var(--primary-blue);">
-                            <i class="fas fa-user-shield"></i> Zero-Knowledge Proofs
-                            <p style="font-size: 10px; font-weight: 400; color: var(--text-gray);">Validating data without seeing it.</p>
+                        <div>
+                            <div style="font-size: 12px; font-weight: 800; color: #0052cc; display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                <i class="fas fa-user-shield"></i> Zero-Knowledge Proofs
+                            </div>
+                            <p style="font-size: 11px; color: #64748b;">Validating data without seeing it.</p>
                         </div>
-                        <div style="font-size: 12px; font-weight: 700; color: var(--primary-blue);">
-                            <i class="fas fa-key"></i> Homomorphic Encryption
-                            <p style="font-size: 10px; font-weight: 400; color: var(--text-gray);">Computed while encrypted.</p>
+                        <div>
+                            <div style="font-size: 12px; font-weight: 800; color: #0052cc; display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                <i class="fas fa-lock"></i> Homomorphic Encryption
+                            </div>
+                            <p style="font-size: 11px; color: #64748b;">Computed while encrypted.</p>
                         </div>
                     </div>
                 </div>
