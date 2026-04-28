@@ -1,4 +1,4 @@
-/* --- 1. GENERAL RESET & VARIABLES --- */
+/* --- 1. OVERVIEW --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -289,3 +289,503 @@ header {
 .session-label { font-size: 10px; font-weight: 800; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; }
 .session-status { font-size: 12px; margin-top: 4px; color: var(--text-gray); font-weight: 500; }
 .encrypted { color: var(--primary-blue); font-weight: 700; }
+
+
+/* --- DIAGNOSIS SUPPORT --- */
+
+
+
+/* Layout Grid */
+.diagnosis-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Page Header Adjustments */
+.page-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+/* --- HEADER STYLING --- */
+.diagnosis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.divider-pipe {
+    color: #cbd5e1;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.privacy-status-pill {
+    background: #e3fcef;
+    color: #00875a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Version & Sync Info */
+.version-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: right;
+}
+
+.version-info i {
+    color: var(--primary-blue);
+    font-size: 14px;
+}
+
+.version-number {
+    color: var(--primary-blue);
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.last-sync {
+    font-size: 10px;
+    color: var(--text-gray);
+    margin: 0;
+}
+
+/* Network Sync Icon (Circle with smaller circles) */
+.network-node-icon {
+    color: #64748b;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.network-node-icon:hover {
+    color: var(--primary-blue);
+}
+
+/* Notification Bell */
+.notification-icon {
+    position: relative;
+    color: #64748b;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #ff5630; /* Bright Red */
+    border: 2px solid var(--bg-overview);
+    border-radius: 50%;
+} 
+.privacy-status {
+    background: #e3fcef;
+    color: #006644;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+}
+
+/* Card Styling */
+.card {
+    background: var(--card-white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    margin-bottom: 24px;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label, .input-box label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-gray);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+textarea, .input-box input {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 14px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+textarea:focus, .input-box input:focus {
+    border-color: var(--primary-blue);
+    background: #fff;
+}
+
+textarea { height: 120px; resize: none; }
+
+.vital-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* AI Action Button */
+.btn-primary-ai {
+    width: 100%;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(0, 82, 204, 0.2);
+}
+
+/* Inference Result Items */
+.inference-item {
+    padding: 20px;
+    border-radius: 12px;
+    background: #f8fafc;
+    margin-bottom: 15px;
+}
+
+.inference-item.highlight {
+    background: white;
+    border: 1px solid #e2e8f0;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.item-header .percentage {
+    color: var(--primary-blue);
+    font-size: 20px;
+}
+
+.source-info {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-top: 10px;
+}
+
+/* Radiology "Dashed" box */
+.radiology-upload {
+    border: 2px dashed var(--border-light);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f8fafc;
+}
+
+/* --- MODEL MANAGEMENT */
+
+/* Header Area */
+.diagnosis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Layout Grids */
+.model-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* Feature Map Progress Bars */
+.feature-importance-item {
+    margin-bottom: 15px;
+}
+
+.feature-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.importance-bar-bg {
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.importance-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
+
+/* Node Updates Table */
+.node-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.node-table th {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-gray);
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.node-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid #f8f9fa;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+/* Status Badges */
+.status-pill {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.status-pill.validated {
+    background: #e3fcef;
+    color: #00875a;
+}
+
+.status-pill.pending {
+    background: #deebff;
+    color: #0747a6;
+}
+
+.status-pill.outlier {
+    background: #ffebe6;
+    color: #bf2600;
+}
+
+/* Action Buttons within Table */
+.btn-table-action {
+    background: white;
+    border: 1px solid var(--border-light);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-table-action:hover {
+    background: #f1f5f9;
+}
+
+.btn-table-action.danger {
+    border-color: #ff5630;
+    color: #ff5630;
+}
+
+.btn-table-action.danger:hover {
+    background: #fff5f5;
+}
+
+/* Architecture Highlight Box */
+.arch-box {
+    background: #f0f7ff;
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.arch-box p {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.arch-box strong {
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+/* --- 9. SECURITY & TRACEABILITY  --- */
+
+/* Block Stats in Header */
+.card-mini-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    background: var(--card-white);
+}
+
+.stat-icon-circle {
+    font-size: 16px;
+}
+
+.stat-icon-circle.blue { color: var(--primary-blue); }
+.stat-icon-circle.green { color: #00875a; }
+
+/* Ledger Table Refinements */
+.ledger-hash {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ledger-hash:hover {
+    text-decoration: underline;
+}
+
+/* Cryptographic Status Pills */
+.status-pill.committed {
+    background: #e3fcef;
+    color: #00875a;
+}
+
+.status-pill.flagged {
+    background: #ffebe6;
+    color: #bf2600;
+}
+
+/* IPFS & Integrity Sidebar */
+.ipfs-box {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #cbd5e1;
+    margin-bottom: 12px;
+}
+
+.ipfs-box code {
+    font-size: 11px;
+    color: var(--text-dark);
+    word-break: break-all;
+}
+
+.integrity-card-blue {
+    background: linear-gradient(135deg, #0747a6 0%, #0052cc 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.2);
+}
+
+/* Traceability Graphic Section */
+.traceability-footer-card {
+    background: #f0f7ff;
+    border: 1px solid #deebff;
+    padding: 30px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.traceability-text h3 {
+    color: var(--text-dark);
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.traceability-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.crypto-feature-item {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.crypto-feature-item p {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-gray);
+    margin-top: 4px;
+}
+
+/* Ledger History Link */
+.view-history-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: 0.2s;
+}
+
+.view-history-link:hover {
+    letter-spacing: 1px;
+}

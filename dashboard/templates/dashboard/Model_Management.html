@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedXChAIn | Model Management</title>
+    
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{% static 'dashboard/Media/LOGO.png' %}" alt="MedXChAIn Logo" class="logo-img">
+                MedXChAIn
+            </div>
+
+            <div class="user-profile">
+                <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" alt="Dr. Seham Hakim">
+                <div class="profile-text">
+                    <strong>Dr. Seham Hakim</strong><br>
+                    <span>Doctor</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><i class="fas fa-th-large"></i> Overview</a>
+                <a href="{% url 'anamnesis_record' %}" class="{% if request.resolver_match.url_name == 'anamnesis_record' %}active{% endif %}"><i class="fas fa-file-medical"></i> Anamnesis Record</a>
+                <a href="{% url 'diagnosis_support' %}" class="{% if request.resolver_match.url_name == 'diagnosis_support' %}active{% endif %}"><i class="fas fa-stethoscope"></i> Diagnosis Support</a>
+                <a href="{% url 'model_management' %}" class="{% if request.resolver_match.url_name == 'model_management' %}active{% endif %}"><i class="fas fa-microchip"></i> Model Management</a>
+                <a href="{% url 'hospital_management' %}" class="{% if request.resolver_match.url_name == 'hospital_management' %}active{% endif %}"><i class="fas fa-hospital"></i> Hospital Management</a>
+                <a href="{% url 'security_traceability' %}" class="{% if request.resolver_match.url_name == 'security_traceability' %}active{% endif %}"><i class="fas fa-shield-alt"></i> Security & Traceability</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-badge">
+                    <div class="badge-header">
+                        <div class="dot-indicator"></div>
+                        <span>FEDERATED LEARNING ACTIVE</span>
+                    </div>
+                    <p>Global Model: v4.2.1-stable</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+                <div class="page-title-area">
+                    <h2 style="font-size: 24px; font-weight: 700;">Model Architecture & Training</h2>
+                    <p style="font-size: 13px; color: #00875a; margin-top: 5px; font-weight: 600;">
+                        <i class="fas fa-check-circle"></i> Centralized Global Aggregator active for v4.2.1-stable
+                    </p>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn-table-action" style="padding: 10px 20px;"><i class="fas fa-history"></i> Version Logs</button>
+                    <button class="btn-primary-ai" style="padding: 10px 20px; width: auto;"><i class="fas fa-bolt"></i> Trigger Aggregation</button>
+                </div>
+            </header>
+
+            <div class="model-top-grid">
+                
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 style="font-size: 16px;">Global Model Profile</h3>
+                        <span class="status-pill validated" style="background: #e3fcef; color: #00875a;">PRODUCTION READY</span>
+                    </div>
+
+                    <div class="arch-box">
+                        <p>ARCHITECTURE</p>
+                        <strong>DenseNet-121-Res-v2</strong>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                        <div>
+                            <p class="stat-label" style="font-size: 10px;">TOTAL PARAMETERS</p>
+                            <h4 style="font-size: 22px; font-weight: 700;">7.2M</h4>
+                        </div>
+                        <div>
+                            <p class="stat-label" style="font-size: 10px;">TRAINING EPOCHS</p>
+                            <h4 style="font-size: 22px; font-weight: 700;">450 / 1000</h4>
+                        </div>
+                    </div>
+
+                    <p class="stat-label" style="font-size: 10px; font-weight: 800; margin-bottom: 12px;">FEATURE MAP IMPORTANCE</p>
+                    <div class="feature-importance-item">
+                        <div class="feature-label-row"><span>Imaging</span><span>85%</span></div>
+                        <div class="importance-bar-bg"><div class="importance-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="feature-importance-item">
+                        <div class="feature-label-row"><span>Genomics</span><span>42%</span></div>
+                        <div class="importance-bar-bg"><div class="importance-fill" style="width: 42%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <h3 style="font-size: 16px;">Performance Tracking</h3>
+                        <div style="display: flex; gap: 15px; font-size: 11px; font-weight: 700;">
+                            <span style="color: var(--primary-blue);"><i class="fas fa-circle"></i> F1 Score</span>
+                            <span style="color: #64748b;"><i class="fas fa-circle"></i> Precision</span>
+                        </div>
+                    </div>
+                    <div style="height: 250px;">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3 style="font-size: 16px;">Node Model Updates</h3>
+                    <a href="#" style="font-size: 12px; color: var(--primary-blue); font-weight: 700; text-decoration: none;">View History ></a>
+                </div>
+                
+                <table class="node-table">
+                    <thead>
+                        <tr>
+                            <th>Hospital Node</th>
+                            <th>Status</th>
+                            <th>Batch Accuracy</th>
+                            <th>Local Epochs</th>
+                            <th>Received</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mary Medical Center</strong></td>
+                            <td><span class="status-pill validated">Validated</span></td>
+                            <td><strong>98.2%</strong></td>
+                            <td>20 / 20</td>
+                            <td>45s ago</td>
+                            <td><i class="fas fa-check-circle" style="color: var(--primary-blue); font-size: 18px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Johns Hopkins Med</strong></td>
+                            <td><span class="status-pill pending">Pending Check</span></td>
+                            <td><strong>97.8%</strong></td>
+                            <td>18 / 20</td>
+                            <td>3 mins ago</td>
+                            <td><button class="btn-table-action">Validate Update</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cleveland C. Hospital</strong></td>
+                            <td><span class="status-pill outlier">Outlier Alert</span></td>
+                            <td><strong style="color: #bf2600;">82.1%</strong></td>
+                            <td>20 / 20</td>
+                            <td>12 mins ago</td>
+                            <td><button class="btn-table-action danger">Review Discrepancy</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn-deploy-fixed" style="bottom: 30px; right: 40px; width: 60px; height: 60px; border-radius: 50%; padding: 0; justify-content: center;">
+                <i class="fas fa-plus" style="font-size: 20px;"></i>
+            </button>
+        </main>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['EP 100', 'EP 150', 'EP 200', 'EP 250', 'EP 300', 'EP 350', 'EP 400'],
+                datasets: [{
+                    label: 'F1 Score',
+                    data: [0.3, 0.4, 0.6, 0.8, 0.94, 0.93, 0.91],
+                    borderColor: '#0052cc',
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    tension: 0.4,
+                    fill: false
+                },
+                {
+                    label: 'Precision',
+                    data: [0.2, 0.35, 0.5, 0.65, 0.78, 0.82, 0.80],
+                    borderColor: '#cbd5e1',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    tension: 0.4,
+                    fill: false
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } },
+                    x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
