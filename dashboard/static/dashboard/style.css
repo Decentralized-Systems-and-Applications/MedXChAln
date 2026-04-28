@@ -112,6 +112,7 @@ body {
   font-size: 13px;
   margin-bottom: 4px;
   text-align: left;
+  text-decoration: none;
   font-family: var(--font);
   transition: all 0.15s;
 }
