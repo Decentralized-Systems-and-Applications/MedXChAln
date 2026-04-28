@@ -17,6 +17,14 @@
                 <img src="{% static 'dashboard/Media/LOGO.png' %}" alt="MedXChAIn Logo" class="logo-img">
                 MedXChAIn
             </div>
+
+            <div class="user-profile">
+                <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" alt="Dr. Seham Hakim">
+                <div class="profile-text">
+                    <strong>Dr. Seham Hakim</strong><br>
+                    <span>Doctor</span>
+                </div>
+            </div>
             <nav class="main-nav">
                 <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><i class="fas fa-th-large"></i> Overview</a>
                 <a href="{% url 'anamnesis_record' %}" class="{% if request.resolver_match.url_name == 'anamnesis_record' %}active{% endif %}"><i class="fas fa-file-medical"></i> Anamnesis Record</a>
@@ -25,101 +33,130 @@
                 <a href="{% url 'hospital_management' %}" class="{% if request.resolver_match.url_name == 'hospital_management' %}active{% endif %}"><i class="fas fa-hospital"></i> Hospital Management</a>
                 <a href="{% url 'security_traceability' %}" class="{% if request.resolver_match.url_name == 'security_traceability' %}active{% endif %}"><i class="fas fa-shield-alt"></i> Security & Traceability</a>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-badge" style="background: #f0f4ff; border: 1px solid #d0daff; padding: 10px; border-radius: 8px;">
+                    <div class="badge-header" style="display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 800; color: #0052cc;">
+                        <div class="dot-indicator" style="width: 8px; height: 8px; background: #0052cc; border-radius: 50%;"></div>
+                        <span>FEDERATED LEARNING ACTIVE</span>
+                    </div>
+                </div>
+            </div>
         </aside>
 
         <main class="main-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <div class="search-container" style="position: relative; width: 350px;">
+                    <i class="fas fa-search" style="position: absolute; left: 15px; top: 12px; color: #8a94a6;"></i>
+                    <input type="text" placeholder="Search hospitals or nodes..." style="width: 100%; padding: 10px 15px 10px 40px; border-radius: 20px; border: 1px solid #e2e8f0; background: #f8fafc;">
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: var(--primary-blue); font-size: 14px;">GLOBAL MODEL v4.2.1</span><br>
+                        <span style="font-size: 11px; color: #8a94a6;">LAST UPDATE 2 mins ago</span>
+                    </div>
+                    <i class="fas fa-history" style="color: #64748b;"></i>
+                    <i class="fas fa-project-diagram" style="color: #64748b;"></i>
+                    <i class="fas fa-bell" style="color: #64748b;"></i>
+                    <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" style="width: 35px; height: 35px; border-radius: 50%;">
+                </div>
+            </div>
+
             <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
                 <div class="header-left">
                     <h2 style="font-size: 24px; font-weight: 700;">Hospital Network</h2>
-                    <p style="font-size: 13px; color: var(--text-gray); margin-top: 5px;">Manage node participation and monitor contribution levels.</p>
+                    <p style="font-size: 13px; color: #64748b; margin-top: 5px;">Manage node participation, monitor contribution levels, and verify blockchain security.</p>
                 </div>
-                <button class="btn-primary-ai" style="width: auto; padding: 12px 24px;">
+                <button class="btn-primary-ai" style="width: auto; padding: 12px 24px; background: #0052cc; color: white; border: none; border-radius: 8px; font-weight: 700;">
                     <i class="fas fa-plus-square"></i> Provision New Node 
                 </button>
             </header>
 
             <div class="stats-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
                 <div class="card" style="background: white; padding: 25px; border-radius: 16px;">
-                    <p class="stat-label">ACTIVE NODES</p>
+                    <p class="stat-label" style="font-size: 11px; color: #64748b; font-weight: 700;">ACTIVE NODES</p>
                     <div style="display: flex; align-items: baseline; gap: 10px;">
                         <h3 style="font-size: 32px;">124</h3>
                         <span style="color: #00875a; font-weight: 700; font-size: 14px;">+3 this month</span>
                     </div>
                 </div>
                 <div class="card" style="background: white; padding: 25px; border-radius: 16px;">
-                    <p class="stat-label">TOTAL CONTRIBUTIONS</p>
-                    <h3 style="font-size: 32px;">1.2M <span style="font-size: 14px; font-weight: 500; color: var(--text-gray);">gradients</span></h3>
+                    <p class="stat-label" style="font-size: 11px; color: #64748b; font-weight: 700;">TOTAL CONTRIBUTIONS</p>
+                    <h3 style="font-size: 32px;">1.2M <span style="font-size: 14px; font-weight: 500; color: #64748b;">gradients</span></h3>
                 </div>
-                <div class="card" style="background: white; padding: 25px; border-radius: 16px; position: relative; overflow: hidden;">
-                    <p class="stat-label">BLOCKCHAIN SYNC</p>
+                <div class="card" style="background: white; padding: 25px; border-radius: 16px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+                    <p class="stat-label" style="font-size: 11px; color: #64748b; font-weight: 700;">BLOCKCHAIN SYNC</p>
                     <h3 style="font-size: 24px; color: #00875a;"><i class="fas fa-check-circle"></i> 99.9% Integrity</h3>
-                    <i class="fas fa-shield-halved" style="position: absolute; right: -10px; bottom: -10px; font-size: 80px; opacity: 0.05;"></i>
+                    <i class="fas fa-shield-alt" style="position: absolute; right: -5px; bottom: -5px; font-size: 60px; color: #f1f5f9; z-index: 0;"></i>
                 </div>
             </div>
 
             <div class="card" style="background: white; padding: 25px; border-radius: 16px; margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
                     <h3 style="font-size: 18px;">Registered Facilities</h3>
-                    <div style="color: var(--text-gray); font-size: 14px; cursor: pointer;">Export Report <i class="fas fa-chevron-down"></i></div>
+                    <div style="color: #64748b; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px;">Export Report <i class="fas fa-sliders-h"></i></div>
                 </div>
-                <table class="node-table" style="width: 100%;">
+                <table class="node-table" style="width: 100%; border-collapse: collapse;">
                     <thead>
-                        <tr>
-                            <th>Hospital Name</th>
-                            <th>Status</th>
-                            <th>Contribution Level</th>
-                            <th>Security Status</th>
+                        <tr style="text-align: left; border-bottom: 1px solid #f1f5f9; color: #8a94a6; font-size: 11px;">
+                            <th style="padding-bottom: 15px;">HOSPITAL NAME</th>
+                            <th style="padding-bottom: 15px;">STATUS</th>
+                            <th style="padding-bottom: 15px;">CONTRIBUTION LEVEL</th>
+                            <th style="padding-bottom: 15px;">SECURITY STATUS</th>
+                            <th style="padding-bottom: 15px;">ACTIONS</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>
+                    <tbody style="font-size: 13px;">
+                        <tr style="border-bottom: 1px solid #f8fafc;">
+                            <td style="padding: 15px 0;">
                                 <div style="display: flex; align-items: center; gap: 12px;">
-                                    <div style="background: #f0f7ff; color: var(--primary-blue); padding: 10px; border-radius: 8px;"><i class="fas fa-h-square"></i></div>
+                                    <div style="background: #e0eaff; color: #0052cc; width: 35px; height: 35px; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-hospital-user"></i></div>
                                     <div>
                                         <strong>St. Mary Medical Center</strong><br>
-                                        <span style="font-size: 11px; color: var(--text-gray);">London, UK • Node #4292</span>
+                                        <span style="font-size: 11px; color: #8a94a6;">London, UK • Node #4292</span>
                                     </div>
                                 </div>
                             </td>
-                            <td><span class="status-pill validated"><i class="fas fa-circle" style="font-size: 7px;"></i> ACTIVE</span></td>
-                            <td><strong>24,592</strong></td>
-                            <td><span style="border: 1px solid #deebff; color: var(--primary-blue); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 800;"><i class="fas fa-link"></i> BLOCKCHAIN VERIFIED</span></td>
-                        </tr>
-                        <tr>
+                            <td><span style="color: #00875a; font-weight: 700; font-size: 10px;"><i class="fas fa-circle" style="font-size: 6px;"></i> ACTIVE</span></td>
                             <td>
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <div style="background: #f0f7ff; color: var(--primary-blue); padding: 10px; border-radius: 8px;"><i class="fas fa-h-square"></i></div>
-                                    <div>
-                                        <strong>Berlin G. Hospital</strong><br>
-                                        <span style="font-size: 11px; color: var(--text-gray);">Berlin, GER • Node #3310</span>
-                                    </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <strong>24,592</strong>
+                                    <div style="width: 60px; height: 4px; background: #f1f5f9; border-radius: 2px;"><div style="width: 70%; height: 100%; background: #0052cc; border-radius: 2px;"></div></div>
                                 </div>
                             </td>
-                            <td><span style="background: #ffebe6; color: #bf2600; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 800;"><i class="fas fa-circle" style="font-size: 7px;"></i> INACTIVE</span></td>
-                            <td><strong>0</strong></td>
-                            <td><span style="background: #fff0f0; color: #ff5630; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 800;"><i class="fas fa-triangle-exclamation"></i> VERIFICATION PENDING</span></td>
+                            <td><span style="border: 1px solid #deebff; color: #0052cc; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 800;"><i class="fas fa-link"></i> BLOCKCHAIN VERIFIED</span></td>
+                            <td><i class="far fa-eye" style="color: #8a94a6; cursor: pointer;"></i></td>
                         </tr>
-                    </tbody>
+                        </tbody>
                 </table>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 12px; color: #8a94a6;">
+                    <span>Showing 1 of 124 hospitals</span>
+                    <div style="display: flex; gap: 5px;">
+                        <button style="border: 1px solid #e2e8f0; background: white; padding: 5px 10px; border-radius: 4px;"><i class="fas fa-chevron-left"></i></button>
+                        <button style="background: #0052cc; color: white; border: none; padding: 5px 10px; border-radius: 4px;">1</button>
+                        <button style="border: 1px solid #e2e8f0; background: white; padding: 5px 10px; border-radius: 4px;">2</button>
+                        <button style="border: 1px solid #e2e8f0; background: white; padding: 5px 10px; border-radius: 4px;">3</button>
+                        <button style="border: 1px solid #e2e8f0; background: white; padding: 5px 10px; border-radius: 4px;"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
             </div>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
-                <div class="card" style="background: linear-gradient(135deg, #0d2149 0%, #162a5a 100%); color: white; display: flex; align-items: center; justify-content: space-between;">
-                    <div style="max-width: 60%;">
+                <div class="card" style="background: linear-gradient(135deg, #0d2149 0%, #162a5a 100%); color: white; border-radius: 16px; padding: 30px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="max-width: 65%;">
                         <h3 style="margin-bottom: 10px;">Automated Compliance Auditor</h3>
-                        <p style="font-size: 13px; opacity: 0.8; line-height: 1.5; margin-bottom: 20px;">Monitoring node data integrity against KVKK and GDPR requirements in real-time.</p>
-                        <button style="background: white; color: var(--primary-blue); border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer;">Run Compliance Scan</button>
+                        <p style="font-size: 13px; opacity: 0.8; line-height: 1.5; margin-bottom: 20px;">Our AI constantly monitors node data integrity against KVKK and GDPR requirements in real-time. No manual intervention required.</p>
+                        <button style="background: white; color: #0052cc; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer;">Run Compliance Scan</button>
                     </div>
-                    <i class="fas fa-shield-check" style="font-size: 100px; opacity: 0.1;"></i>
-                </div>
-                <div class="card" style="background: white; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px;">
-                    <div style="background: #f1f5f9; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
-                        <i class="fas fa-terminal" style="font-size: 24px; color: var(--text-dark);"></i>
+                    <img src="{% static 'dashboard/Media/globe-iso.png' %}" style="width: 150px; opacity: 0.2;"> </div>
+                <div class="card" style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px;">
+                    <div style="background: white; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                        <i class="fas fa-file-code" style="font-size: 24px; color: #0052cc;"></i>
                     </div>
-                    <h3 style="font-size: 16px; margin-bottom: 10px;">Technical Logs</h3>
-                    <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">Review low-level node handshakes.</p>
-                    <a href="#" style="color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 13px;">Access Node Terminal</a>
+                    <h3 style="font-size: 16px; margin-bottom: 10px; color: #1e293b;">Technical Logs</h3>
+                    <p style="font-size: 12px; color: #64748b; margin-bottom: 15px;">Review low-level node handshake and gradient exchange logs.</p>
+                    <a href="#" style="color: #0052cc; font-weight: 700; text-decoration: none; font-size: 13px;">Access Node Terminal</a>
                 </div>
             </div>
         </main>
