@@ -33,24 +33,24 @@
   </div>
  
   <nav class="nav">
-    <button class="nav-item active" onclick="setActive(this)">
+    <a class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">
       <span class="nav-icon"><i class="fa-solid fa-bars-progress"></i></span> Overview
-    </button>
-    <button class="nav-item" onclick="setActive(this)">
+    </a>
+    <a class="nav-item {% if request.resolver_match.url_name == 'anamnesis_record' %}active{% endif %}" href="{% url 'anamnesis_record' %}">
       <span class="nav-icon"><i class="fa-solid fa-file-medical"></i></span> Anamnesis Record
-    </button>
-    <button class="nav-item" onclick="setActive(this)">
+    </a>
+    <a class="nav-item {% if request.resolver_match.url_name == 'diagnosis_support' %}active{% endif %}" href="{% url 'diagnosis_support' %}">
       <span class="nav-icon"><i class="fa-solid fa-user-doctor"></i></span> Diagnosis Support
-    </button>
-    <button class="nav-item" onclick="setActive(this)">
+    </a>
+    <a class="nav-item {% if request.resolver_match.url_name == 'model_management' %}active{% endif %}" href="{% url 'model_management' %}">
       <span class="nav-icon"><i class="fa-solid fa-staff-snake"></i></span> Model Management
-    </button>
-    <button class="nav-item" onclick="setActive(this)">
+    </a>
+    <a class="nav-item {% if request.resolver_match.url_name == 'hospital_management' %}active{% endif %}" href="{% url 'hospital_management' %}">
       <span class="nav-icon"><i class="fa-solid fa-hospital"></i></span> Hospital Management
-    </button>
-    <button class="nav-item" onclick="setActive(this)">
+    </a>
+    <a class="nav-item {% if request.resolver_match.url_name == 'security_traceability' %}active{% endif %}" href="{% url 'security_traceability' %}">
       <span class="nav-icon"><i class="fa-solid fa-shield-halved"></i></span> Security &amp; Traceability
-    </button>
+    </a>
   </nav>
  
   <div class="sidebar-bottom">
