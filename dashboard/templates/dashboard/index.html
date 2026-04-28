@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedXCHain Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,12 +15,12 @@
         
         <aside class="sidebar">
             <div class="logo">
-                <img src="Media/LOGO.png" alt="MedXCHain Logo" class="logo-img">
+                <img src="{% static 'dashboard/Media/LOGO.png' %}" alt="MedXChAIn Logo" class="logo-img">
                 MedXCHain
             </div>
 
             <div class="user-profile">
-                <img src="Media/PersonalPic.jpg" alt="Dr. Seham Hakim">
+                <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" alt="Dr. Seham Hakim">
                 <div class="profile-text">
                     <strong>Dr. Seham Hakim</strong><br>
                     <span>Doctor</span>
@@ -237,7 +237,8 @@
             </section>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="script.js"></script>
+    <script src="{% static 'dashboard/script.js' %}"></script>
 </body>
 </html>
