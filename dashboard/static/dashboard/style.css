@@ -108,6 +108,25 @@ nav a.active {
 .status-badge span { font-size: 10px; font-weight: 800; color: var(--primary-blue); }
 .status-badge p { font-size: 11px; color: #42526e; line-height: 1.4; }
 
+/*Logout button*/
+.logout-link {
+    color: #e74c3c !important; /* Medical action red */
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+/* Make the icon match the text color */
+.logout-link i {
+    color: #e74c3c !important;
+}
+
+/* Hover effect: make it slightly darker or add a subtle background */
+.logout-link:hover {
+    color: #c0392b !important; /* Darker red on hover */
+    background-color: rgba(231, 76, 60, 0.05); /* Very light red tint */
+    border-radius: 4px;
+    padding-left: 5px; /* Subtle movement effect */
+}
 /* --- 3. MAIN CONTENT AREA --- */
 .main-content {
     flex: 1;
