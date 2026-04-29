@@ -36,6 +36,14 @@
 
             <div class="sidebar-footer">
                 <div class="footer-nav">
+                    <form action="{% url 'logout' %}" method="post" id="logout-form" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+
+                    <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();" class="footer-link logout-link">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+
                     <a href="#" class="footer-link"><i class="fas fa-cog"></i> Settings</a>
                     <a href="#" class="footer-link"><i class="fas fa-question-circle"></i> Support</a>
                 </div>
