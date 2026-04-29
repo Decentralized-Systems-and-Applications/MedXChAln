@@ -19,6 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     # This single line handles both Overview and Diagnosis Support 
     # because they are both defined inside dashboard/urls.py
     path('', include('dashboard.urls')), 

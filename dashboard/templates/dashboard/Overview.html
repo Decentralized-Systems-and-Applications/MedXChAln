@@ -20,10 +20,9 @@
             </div>
 
             <div class="user-profile">
-                <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" alt="Dr. Seham Hakim">
-                <div class="profile-text">
-                    <strong>Dr. Seham Hakim</strong><br>
-                    <span>Doctor</span>
+                <img src="path/to/profile.jpg" alt="Profile">
+                <div class="user-info">
+                    <h3>{{ user.username }}</h3> <p>Doctor</p>
                 </div>
             </div>
             <nav class="main-nav">
@@ -37,6 +36,14 @@
 
             <div class="sidebar-footer">
                 <div class="footer-nav">
+                    <form action="{% url 'logout' %}" method="post" id="logout-form" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+
+                    <a href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();" class="footer-link logout-link">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+
                     <a href="#" class="footer-link"><i class="fas fa-cog"></i> Settings</a>
                     <a href="#" class="footer-link"><i class="fas fa-question-circle"></i> Support</a>
                 </div>
