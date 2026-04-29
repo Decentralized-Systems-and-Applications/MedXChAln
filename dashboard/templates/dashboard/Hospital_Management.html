@@ -18,13 +18,14 @@
                 MedXChAIn
             </div>
 
+
             <div class="user-profile">
-                <img src="{% static 'dashboard/Media/PersonalPic.jpg' %}" alt="Dr. Seham Hakim">
-                <div class="profile-text">
-                    <strong>Dr. Seham Hakim</strong><br>
-                    <span>Doctor</span>
+                <img src="path/to/profile.jpg" alt="Profile">
+                <div class="user-info">
+                    <h3>{{ user.username }}</h3> <p>Doctor</p>
                 </div>
             </div>
+            
             <nav class="main-nav">
                 <a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><i class="fas fa-th-large"></i> Overview</a>
                 <a href="{% url 'anamnesis_record' %}" class="{% if request.resolver_match.url_name == 'anamnesis_record' %}active{% endif %}"><i class="fas fa-file-medical"></i> Anamnesis Record</a>
