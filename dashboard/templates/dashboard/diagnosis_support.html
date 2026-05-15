@@ -12,6 +12,61 @@
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<script>
+async function getAISuggestion() {
+    const symptomText = document.querySelector('textarea').value.trim();
+    if (!symptomText) {
+        alert("Please enter patient symptoms.");
+        return;
+    }
+
+    const btn = document.querySelector('.btn-primary-ai');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch('/diagnosis/predict/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ symptoms: symptomText })
+        });
+
+        const data = await response.json();
+        renderResults(data.predictions);
+    } catch (err) {
+        alert("An error occurred. Please try again.");
+    } finally {
+        btn.innerHTML = '<i class="fas fa-brain"></i> Get AI Suggestion';
+        btn.disabled = false;
+    }
+}
+
+function renderResults(predictions) {
+    const panel = document.querySelector('.results-panel .card');
+    
+    let html = `<h3 style="margin-bottom: 20px; border-left: 4px solid var(--primary-blue); padding-left: 12px;">AI Diagnostic Inference</h3>`;
+
+    predictions.forEach((item, index) => {
+        const isTop = index === 0;
+        const color = isTop ? 'var(--primary-blue)' : '#94a3b8';
+        const bg    = isTop ? '#f0f7ff' : '#f8fafc';
+        const border = isTop ? 'border: 1px solid #deebff;' : '';
+
+        html += `
+        <div style="background: ${bg}; padding: 15px; border-radius: 12px; margin-bottom: 12px; ${border}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <strong style="font-size: ${isTop ? 14 : 13}px;">${item.disease}</strong>
+                <span style="font-size: ${isTop ? 20 : 18}px; font-weight: 800; color: ${color};">${item.probability}%</span>
+            </div>
+            <div style="height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden;">
+                <div style="width: ${item.probability}%; height: 100%; background: ${color};"></div>
+            </div>
+        </div>`;
+    });
+
+    panel.innerHTML = html;
+}
+</script>
 <body>
     <div class="dashboard-container">
         
@@ -112,7 +167,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn-primary-ai" style="width: 100%; background: var(--primary-blue); color: white; padding: 16px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <button type="button" class="btn-primary-ai" onclick="getAISuggestion()" style="width: 100%; background: var(--primary-blue); color: white; padding: 16px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
                             <i class="fas fa-brain"></i> Get AI Suggestion
                         </button>
                     </form>
