@@ -1,0 +1,2 @@
+*.pt filter=lfs diff=lfs merge=lfs -text
+dashboard/ml_models/global_model_weights.pt filter=lfs diff=lfs merge=lfs -text
